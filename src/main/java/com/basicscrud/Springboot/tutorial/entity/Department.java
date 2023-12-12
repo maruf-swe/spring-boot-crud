@@ -1,5 +1,6 @@
 package com.basicscrud.Springboot.tutorial.entity;
 
+
 public class Department {
 
     private Long departmentId;
