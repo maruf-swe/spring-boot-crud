@@ -38,4 +38,25 @@ public class Department {
     public void setDepartmentCode(Long departmentCode) {
         this.departmentCode = departmentCode;
     }
+
+    public Department(Long departmentId, Long departmentName, Long departmentAddress, Long departmentCode) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.departmentAddress = departmentAddress;
+        this.departmentCode = departmentCode;
+    }
+
+    public Department() {
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "departmentId=" + departmentId +
+                ", departmentName=" + departmentName +
+                ", departmentAddress=" + departmentAddress +
+                ", departmentCode=" + departmentCode +
+                '}';
+    }
 }
+
