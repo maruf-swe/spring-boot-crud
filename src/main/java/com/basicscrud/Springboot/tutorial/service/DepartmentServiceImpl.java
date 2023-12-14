@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
 
-    @Autowired
-    private DepartmentRepository departmentRepository;
+    private final DepartmentRepository departmentRepository;
+
+    public DepartmentServiceImpl(DepartmentRepository departmentRepository){
+        this.departmentRepository = departmentRepository;
+    }
 
     @Override
     public Department saveDepartment(Department department) {
