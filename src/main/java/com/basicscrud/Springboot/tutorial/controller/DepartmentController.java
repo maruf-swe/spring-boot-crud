@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DepartmentController {
 
-    @Autowired
-    private DepartmentService departmentService;
+    private final DepartmentService departmentService;
+
+    public DepartmentController(DepartmentService departmentService) {
+        this.departmentService = departmentService;
+    }
 
     @PostMapping("/")
     public Department saveDepartment(@RequestBody Department department) {
