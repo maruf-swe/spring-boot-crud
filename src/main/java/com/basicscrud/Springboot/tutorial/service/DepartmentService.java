@@ -12,4 +12,6 @@ public interface DepartmentService {
 
 
     public Department getDepartmentById(Long departmentId);
+
+    public void deleteDepartmentById(Long departmentId);
 }
