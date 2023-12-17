@@ -2,15 +2,19 @@ package com.basicscrud.Springboot.tutorial.service;
 
 import com.basicscrud.Springboot.tutorial.entity.Department;
 import com.basicscrud.Springboot.tutorial.repository.DepartmentRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final DepartmentRepository departmentRepository;
+
+    ModelMapper mapper = new ModelMapper();
 
     public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
@@ -37,8 +41,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department updateDepartment(Long departmentId, Department department) {
-        ;
+    public Department updateDepartment(Long departmentId, Department newDepartmentInfo) {
+        Optional<Department> existingDepartmentInfo = departmentRepository.findById(departmentId);
+        mapper.map(newDepartmentInfo, existingDepartmentInfo);
+        return departmentRepository.save(newDepartmentInfo);
+
     }
 
 
