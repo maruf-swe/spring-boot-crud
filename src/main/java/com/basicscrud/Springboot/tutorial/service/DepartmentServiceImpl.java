@@ -42,9 +42,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department updateDepartment(Long departmentId, Department newDepartmentInfo) {
-        Optional<Department> existingDepartmentInfo = departmentRepository.findById(departmentId);
+        Department existingDepartmentInfo = departmentRepository.findById(departmentId).get();
         mapper.map(newDepartmentInfo, existingDepartmentInfo);
-        return departmentRepository.save(newDepartmentInfo);
+        return departmentRepository.save(existingDepartmentInfo);
 
     }
 
