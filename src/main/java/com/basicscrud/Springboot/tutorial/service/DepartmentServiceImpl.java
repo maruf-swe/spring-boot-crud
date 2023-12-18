@@ -3,6 +3,8 @@ package com.basicscrud.Springboot.tutorial.service;
 import com.basicscrud.Springboot.tutorial.entity.Department;
 import com.basicscrud.Springboot.tutorial.repository.DepartmentRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,6 +48,17 @@ public class DepartmentServiceImpl implements DepartmentService {
         mapper.map(newDepartmentInfo, existingDepartmentInfo);
         return departmentRepository.save(existingDepartmentInfo);
 
+    }
+
+    @Override
+    public ResponseEntity<Department> updateDepartmentInfo(Long departmentId, Department departmentNewInfo) {
+        Optional<Department> existingDepartment = departmentRepository.findById(departmentId);
+        if (existingDepartment.isPresent()) {
+            mapper.map(departmentNewInfo, existingDepartment.get());
+            return new ResponseEntity<>(departmentRepository.save(existingDepartment.get()), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

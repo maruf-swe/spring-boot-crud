@@ -3,6 +3,8 @@ package com.basicscrud.Springboot.tutorial.controller;
 
 import com.basicscrud.Springboot.tutorial.entity.Department;
 import com.basicscrud.Springboot.tutorial.service.DepartmentService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +45,13 @@ public class DepartmentController {
     @PutMapping("/department/{id}")
     public Department updateDepartment(@PathVariable(name = "id") Long departmentId, @RequestBody Department department) {
         return departmentService.updateDepartment(departmentId, department);
+    }
+
+
+    // Another solution using ResponseEntity
+    @PutMapping("/department/{id}")
+    public ResponseEntity<Department>  updateDepartments(@PathVariable(name = "id") Long departmentId, @RequestBody Department department){
+        return departmentService.updateDepartmentInfo(departmentId, department);
     }
 
 }
