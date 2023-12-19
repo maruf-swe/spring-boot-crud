@@ -19,4 +19,6 @@ public interface DepartmentService {
     public Department updateDepartment(Long departmentId, Department department);
 
     ResponseEntity<Department> updateDepartmentInfo(Long departmentId, Department department);
+
+    public Department getDepartmentByProperty(String propertyName);
 }

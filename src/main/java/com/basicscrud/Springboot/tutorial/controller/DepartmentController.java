@@ -54,4 +54,9 @@ public class DepartmentController {
         return departmentService.updateDepartmentInfo(departmentId, department);
     }
 
+    @GetMapping("/department/name/{name}")
+    public Department getDepartmentByProperty(@PathVariable(name = "name") String propertyName){
+        return departmentService.getDepartmentByProperty(propertyName);
+    }
+
 }

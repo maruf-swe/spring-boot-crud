@@ -61,5 +61,11 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
     }
 
+    @Override
+    public Department getDepartmentByProperty(String propertyName) {
+        return departmentRepository.findByDepartmentNameIgnoreCase(propertyName);
+
+    }
+
 
 }
