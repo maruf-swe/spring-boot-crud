@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Department {
@@ -12,7 +14,14 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long departmentId;
+
     private String departmentName;
+//    @NotBlank(message = "Please Add Department Name")
+//    @Length(max = 10, min = 3)
+//    @Email                               // all are hibernate validation. all annotation are available
+//    @Positive
+//    @PositiveOrZero
+
     private Long departmentAddress;
     private Long departmentCode;
 
