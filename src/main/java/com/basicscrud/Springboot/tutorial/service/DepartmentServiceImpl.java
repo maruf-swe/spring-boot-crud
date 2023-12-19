@@ -49,7 +49,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentRepository.save(existingDepartmentInfo);
 
     }
-
+    // Another Updating solution using ResponseEntity
     @Override
     public ResponseEntity<Department> updateDepartmentInfo(Long departmentId, Department departmentNewInfo) {
         Optional<Department> existingDepartment = departmentRepository.findById(departmentId);

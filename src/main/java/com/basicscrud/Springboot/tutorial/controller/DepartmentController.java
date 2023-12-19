@@ -49,14 +49,14 @@ public class DepartmentController {
     }
 
 
-    // Another solution using ResponseEntity
-    @PutMapping("/department/{id}")
-    public ResponseEntity<Department>  updateDepartments(@PathVariable(name = "id") Long departmentId, @RequestBody Department department){
+    // Another updating solution using ResponseEntity
+    @PutMapping("/departments/{id}")
+    public ResponseEntity<Department> updateDepartments(@PathVariable(name = "id") Long departmentId, @RequestBody Department department) {
         return departmentService.updateDepartmentInfo(departmentId, department);
     }
 
     @GetMapping("/department/name/{name}")
-    public Department getDepartmentByProperty(@PathVariable(name = "name") String propertyName){
+    public Department getDepartmentByProperty(@PathVariable(name = "name") String propertyName) {
         return departmentService.getDepartmentByProperty(propertyName);
     }
 
